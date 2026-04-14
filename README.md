@@ -8,21 +8,21 @@ Este guia explica como configurar o agente Maia no **CX Agent Studio** (Dialogfl
 
 Acesse o console do Google Cloud e abra o menu sanduíche.
 
-![Menu sanduíche](assets/img_001.png)
+![Menu sanduíche](assets/images/img_001.png)
 
 Navegue até **APIs & Services**.
 
-![APIs e Services](assets/img_002.png)
+![APIs e Services](assets/images/img_002.png)
 
 Localize e ative a **Dialogflow API**.
 
 > O CX Agent Studio usa a Dialogflow API por baixo — é ela que precisa estar ativa.
 
-![Dialogflow API](assets/img_004.png)
+![Dialogflow API](assets/images/img_004.png)
 
 Clique em **Ativar**.
 
-![Ativar](assets/img_005.png)
+![Ativar](assets/images/img_005.png)
 
 ---
 
@@ -32,11 +32,11 @@ Acesse: [https://ces.cloud.google.com/projects](https://ces.cloud.google.com/pro
 
 Escolha o projeto desejado.
 
-![Selecionar projeto](assets/img_006.png)
+![Selecionar projeto](assets/images/img_006.png)
 
 Clique em **Agree and continue**.
 
-![Agree and continue](assets/img_007.png)
+![Agree and continue](assets/images/img_007.png)
 
 ---
 
@@ -44,19 +44,19 @@ Clique em **Agree and continue**.
 
 Clique em **Create your Agent IA**.
 
-![Create Agent IA](assets/img_008.png)
+![Create Agent IA](assets/images/img_008.png)
 
 Selecione **Create Your First AI Agent**.
 
-![Create First Agent](assets/img_009.png)
+![Create First Agent](assets/images/img_009.png)
 
 Nomeie o agente como **Maia**.
 
-![Agente Maia](assets/img_010.png)
+![Agente Maia](assets/images/img_010.png)
 
 Aguarde alguns minutos enquanto o agente é provisionado.
 
-![Aguardando](assets/img_011.png)
+![Aguardando](assets/images/img_011.png)
 
 > **Orientação sobre a tela principal:**
 > - **Root agent** (centro) — é o coração do agente
@@ -69,7 +69,7 @@ Aguarde alguns minutos enquanto o agente é provisionado.
 
 Clique em **Add instructions** dentro do card do Root agent.
 
-![Add instructions](assets/img_0012.png)
+![Add instructions](assets/images/img_0012.png)
 
 Cole o seguinte prompt:
 
@@ -107,7 +107,7 @@ Se o cliente informar o nome, use-o na conversa.
 
 Clique em **Create**.
 
-![Create](assets/img_013.png)
+![Create](assets/images/img_013.png)
 
 ---
 
@@ -115,7 +115,7 @@ Clique em **Create**.
 
 Abra o **Preview Agent** na lateral esquerda.
 
-![Preview Agent](assets/img_014.png)
+![Preview Agent](assets/images/img_014.png)
 
 Digite as mensagens abaixo uma por uma e observe as respostas:
 
@@ -129,7 +129,7 @@ Quero falar com um humano
 > **Erro RESOURCE_EXHAUSTED?**
 > A conta gratuita tem limite de chamadas por minuto ao Gemini. Aguarde 1–2 minutos e a cota se renova automaticamente.
 
-![Erro de cota](assets/img_015.png)
+![Erro de cota](assets/images/img_015.png)
 
 ---
 
@@ -137,7 +137,7 @@ Quero falar com um humano
 
 Cada mensagem passa por 3 etapas visíveis em tempo real:
 
-![Steps](assets/img_016.png)
+![Steps](assets/images/img_016.png)
 
 | Etapa | Tempo | Descrição |
 |---|---|---|
@@ -147,7 +147,7 @@ Cada mensagem passa por 3 etapas visíveis em tempo real:
 
 Toda conversa também é registrada em **JSON estruturado**, permitindo integração com sistemas externos, histórico no BigQuery e auditoria completa.
 
-![JSON](assets/img_017.png)
+![JSON](assets/images/img_017.png)
 
 ---
 
@@ -155,15 +155,15 @@ Toda conversa também é registrada em **JSON estruturado**, permitindo integra�
 
 No card do Root agent, clique no **"+"** na parte inferior → **Add sub-agent**.
 
-![Add sub-agent](assets/img_018.png)
+![Add sub-agent](assets/images/img_018.png)
 
 Confirme em **Create Anyway**.
 
-![Create Anyway](assets/img_019.png)
+![Create Anyway](assets/images/img_019.png)
 
 > Aparecerá um aviso informando que criar um sub-agente desativa o Gemini helper para avaliações automáticas. Isso é esperado.
 
-![Aviso sub-agente](assets/img_020.png)
+![Aviso sub-agente](assets/images/img_020.png)
 
 Clique nos três pontinhos (⋮) do novo card → **Edit config** e configure:
 
@@ -172,11 +172,11 @@ Clique nos três pontinhos (⋮) do novo card → **Edit config** e configure:
 
 Clique em **Save**.
 
-![Edit config](assets/img_021.png)
+![Edit config](assets/images/img_021.png)
 
-![Config nome](assets/img_022.png)
+![Config nome](assets/images/img_022.png)
 
-![Salvar config](assets/img_023.png)
+![Salvar config](assets/images/img_023.png)
 
 ---
 
@@ -184,7 +184,7 @@ Clique em **Save**.
 
 Abra as **Instructions** do Root agent.
 
-![Instructions root](assets/img_024.png)
+![Instructions root](assets/images/img_024.png)
 
 Adicione ao final do prompt existente:
 
@@ -194,7 +194,7 @@ Adicione ao final do prompt existente:
 
 Salve.
 
-![Salvar instrução](assets/img_025.png)
+![Salvar instrução](assets/images/img_025.png)
 
 ### Teste da Delegação
 
@@ -204,7 +204,7 @@ Digite no Preview:
 Quais produtos vocês vendem?
 ```
 
-![Teste delegação](assets/img_026.png)
+![Teste delegação](assets/images/img_026.png)
 
 Você verá:
 - **Handoff to agente_faq** — o Root agent delegou automaticamente para o sub-agente
@@ -231,23 +231,23 @@ Você verá:
 
 Acesse a aba **Deploy**.
 
-![Deploy](assets/img_027.png)
+![Deploy](assets/images/img_027.png)
 
 Escolha a opção de widget recomendada para demonstração.
 
-![Widget](assets/img_028.png)
+![Widget](assets/images/img_028.png)
 
-![Deploy config](assets/img_029.png)
+![Deploy config](assets/images/img_029.png)
 
-![Deploy config 2](assets/img_030.png)
+![Deploy config 2](assets/images/img_030.png)
 
-![Deploy config 3](assets/img_031.png)
+![Deploy config 3](assets/images/img_031.png)
 
-![Deploy config 4](assets/img_032.png)
+![Deploy config 4](assets/images/img_032.png)
 
 Copie o código gerado — ele é o script de integração do chat.
 
-![Get code](assets/img_033.png)
+![Get code](assets/images/img_033.png)
 
 ### Como integrar ao maia-demo.html
 
