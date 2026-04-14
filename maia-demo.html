@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melzitos · Maia, sua assistente virtual</title>
+<!-- Cole script 1 -->
+<script defer
+  src="https://www.gstatic.com/ces-console/fast/chat-messenger/prod/v1.15/chat-messenger.js">
+</script>
+<link rel="stylesheet" href="https://www.gstatic.com/ces-console/fast/chat-messenger/prod/v1.15/themes/chat-messenger-default.css">
+<link rel="stylesheet" href="https://www.gstatic.com/ces-console/fast/chat-messenger/prod/v1.15/themes/chat-messenger-layout.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #333333;
+      --purple-dark: #1a1a1a;
+      --purple-light: #f0f0f0;
+      --yellow: #ff6d00;
+      --yellow-dark: #e65100;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-300: #e0e0e0;
+      --gray-500: #9e9e9e;
+      --gray-700: #616161;
+      --gray-900: #212121;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-300);
+      box-shadow: 0 1px 8px rgba(0,0,0,.06);
+    }
+
+    .header-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--purple);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--yellow-dark);
+    }
+
+    .badge-google {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-300);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    .badge-google svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #444444 0%, #333333 60%, #1a1a1a 100%);
+      color: var(--white);
+      padding: 96px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(255,109,0,.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-avatar {
+      width: 100px;
+      height: 100px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      margin: 0 auto 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 400;
+      max-width: 560px;
+      margin: 0 auto 40px;
+      opacity: .88;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow);
+      color: var(--gray-900);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(255,109,0,.4);
+    }
+
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,109,0,.5); }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 80px 24px; }
+
+    .section-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: var(--purple-light);
+      color: var(--purple);
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -.5px;
+      margin-bottom: 48px;
+      color: var(--gray-900);
+    }
+
+    /* ── FEATURES ── */
+    .features { background: var(--gray-50); }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 36px 32px;
+      border: 1px solid var(--gray-300);
+      transition: transform .25s, box-shadow .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--purple), var(--yellow));
+      border-radius: 4px 4px 0 0;
+    }
+
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(51,51,51,.15); }
+
+    .feature-icon {
+      width: 56px; height: 56px;
+      background: var(--purple-light);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--gray-900);
+    }
+
+    .feature-card p {
+      font-size: .92rem;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+
+    /* ── PRODUCTS ── */
+    .products { background: var(--white); }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 20px;
+      border: 1px solid var(--gray-300);
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.10); }
+
+    .product-thumb {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+
+    .product-thumb.electronics { background: linear-gradient(135deg, #ede7f6, #d1c4e9); }
+    .product-thumb.appliances  { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+    .product-thumb.accessories { background: linear-gradient(135deg, #fff9c4, #fff176); }
+
+    .product-info { padding: 20px 24px 28px; }
+
+    .product-info h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .product-info p {
+      font-size: .85rem;
+      color: var(--gray-500);
+      margin-bottom: 14px;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--purple);
+      margin-bottom: 16px;
+    }
+
+    .btn-ask {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-size: .85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .2s, transform .2s;
+    }
+
+    .btn-ask:hover { background: var(--purple-dark); transform: translateY(-1px); }
+
+    /* ── MAIA BANNER ── */
+    .maia-banner {
+      background: linear-gradient(135deg, #444444 0%, #1a1a1a 100%);
+      color: var(--white);
+      border-radius: 24px;
+      padding: 56px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .maia-banner-text h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .maia-banner-text p {
+      font-size: .98rem;
+      opacity: .85;
+      max-width: 440px;
+    }
+
+    .maia-banner-cta {
+      background: var(--yellow);
+      color: var(--gray-900);
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(255,109,0,.35);
+    }
+
+    .maia-banner-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,109,0,.5); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gray-900);
+      color: var(--gray-500);
+      text-align: center;
+      padding: 40px 24px;
+      font-size: .85rem;
+    }
+
+    footer strong { color: var(--white); }
+
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      opacity: .6;
+      font-size: .78rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { padding: 64px 20px 56px; }
+      section { padding: 56px 20px; }
+      .maia-banner { padding: 36px 28px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">Mel<span>zitos</span></a>
+      <div class="badge-google">
+        <!-- Google Cloud icon (simplified) -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z" fill="#4285F4"/>
+        </svg>
+        Powered by Google Cloud
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-avatar">🤖</div>
+    <h1>Olá! Eu sou a Maia 👋</h1>
+    <p>Sua assistente virtual. Estou aqui para te ajudar com produtos, pedidos e muito mais.</p>
+    <a href="#features" class="hero-cta">
+      <span>💬</span> Conheça o que posso fazer
+    </a>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-inner">
+      <span class="section-label">Funcionalidades</span>
+      <h2 class="section-title">Como a Maia pode te ajudar</h2>
+      <div class="cards-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>Tire suas dúvidas</h3>
+          <p>Pergunte qualquer coisa sobre os nossos produtos, políticas de troca, formas de pagamento e muito mais. A Maia responde na hora.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛍️</div>
+          <h3>Consulte produtos e preços</h3>
+          <p>Encontre o produto ideal para você. A Maia busca no catálogo completo da Melzitos e apresenta as melhores opções com preços atualizados.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌙</div>
+          <h3>Atendimento 24/7</h3>
+          <p>De madrugada, fim de semana ou feriado — a Maia está sempre disponível para garantir a melhor experiência de compra para você.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="section-inner">
+      <span class="section-label">Catálogo</span>
+      <h2 class="section-title">Produtos em destaque</h2>
+      <div class="cards-grid">
+
+        <div class="product-card">
+          <div class="product-thumb electronics">💻</div>
+          <div class="product-info">
+            <h3>Notebook UltraSlim Pro</h3>
+            <p>Eletrônicos · Intel Core i7 · 16GB RAM · 512GB SSD</p>
+            <div class="product-price">R$ 4.299,00</div>
+            <button class="btn-ask">💬 Perguntar à Maia</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb appliances">🫙</div>
+          <div class="product-info">
+            <h3>Air Fryer Smart 12L</h3>
+            <p>Eletrodomésticos · Wi-Fi · Inox escovado · 1800W</p>
+            <div class="product-price">R$ 849,90</div>
+            <button class="btn-ask">💬 Perguntar à Maia</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb accessories">🎧</div>
+          <div class="product-info">
+            <h3>Fone Bluetooth ANC 360</h3>
+            <p>Acessórios · Cancelamento de ruído · 40h bateria</p>
+            <div class="product-price">R$ 399,00</div>
+            <button class="btn-ask">💬 Perguntar à Maia</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section style="background: var(--gray-50); padding: 80px 24px;">
+    <div class="maia-banner">
+      <div class="maia-banner-text">
+        <h2>🤖 Fale com a Maia agora mesmo!</h2>
+        <p>Nossa assistente virtual está online 24 horas por dia, pronta para te ajudar a encontrar o produto perfeito e resolver qualquer dúvida.</p>
+      </div>
+      <a href="#" class="maia-banner-cta">Iniciar conversa →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Melzitos</strong> © 2025 · Powered by <strong>Google Cloud CX Agent Studio</strong></p>
+    <div class="footer-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z" fill="#888"/>
+      </svg>
+      Maia é alimentada por IA conversacional do Google Cloud
+    </div>
+  </footer>
+
+  <!-- Cole aqui seu Script 2 -->
+  <script>
+    window.addEventListener("chat-messenger-loaded", () => {
+      chatSdk.registerContext(
+        chatSdk.prebuilts.ces.createContext({
+          deploymentName: "projects/729582564539/locations/us/apps/8c7312e1-97f8-4058-81ae-a43fabeaf07d/deployments/34e9ca4d-c500-44f5-a9e4-aa8ac686555e",
+          tokenBroker: {
+            enableTokenBroker: true,
+            enableRecaptcha: false
+          }
+        }),
+      );
+    });
+  </script>
+  <chat-messenger url-allowlist="*">
+    <chat-messenger-container
+      chat-title="Maia"
+      chat-title-icon="https://gstatic.com/dialogflow-console/common/assets/ccai-favicons/conversational_agents.png"
+      enable-file-upload
+      enable-audio-input
+    >
+      <chat-reset-session-button slot="titlebar-actions" title-text="Start new chat"></chat-reset-session-button>
+      <chat-toggle-dialog-button slot="titlebar-actions" title-text-expanded="Collapse" title-text-collapsed="Expand"></chat-toggle-dialog-button>
+      <chat-messenger-close-button slot="titlebar-actions" title-text="Close"></chat-messenger-close-button>
+    </chat-messenger-container>
+  </chat-messenger>
+
+</body>
+</html>
